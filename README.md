@@ -25,7 +25,7 @@ But along with the CNN model as suggested, we implemented two models for generat
 
 A musical piece often consists of recurring elements at various levels, from motifs to phrases to sections such as verse-chorus. To generate a coherent piece, a model needs to reference elements that came before, sometimes in the distant past, repeating, varying, and further developing them to create contrast and surprise. But before we delve into the technical implementation  let us understand the building blocks of music:
 
-<img src="./images/piano.png" width="500" />
+<img src="https://raw.githubusercontent.com/mahmudnahid/dl2-project2/main/images/piano.png" width="500" />
 
 
 Labels of the notes are (in sharp, #, notation):
@@ -75,7 +75,7 @@ Now that we know the building blocks of music, let us understand how we can gene
 
 The JSB Chorale dataset consists of four-part scored choral music, which can be represented as a matrix where rows correspond to chords and columns to time discretized notes. The matrix’s entries are integers that denote which pitch is being played. Notes range from 36 (C1 = C on octave 1) to 81 (A5 = A on octave 5), plus 0 for silence:
 
-<img src="./images/chorale.JPG" width="250" />
+<img src="https://raw.githubusercontent.com/mahmudnahid/dl2-project2/main/images/chorale.JPG" width="250" />
 
 This is very similar to time-series data or word sequence data  in NLP. So we took a sequence to sequence modeling approach for generating the output note sequences. Each chorale will be a long sequence of notes (rather than chords), and we can just train a model that can predict the next note given all the previous notes. We will feed a window to the neural net, and it tries to predict that same window shifted one time step into the future.
     
@@ -92,11 +92,11 @@ The dataset is available here: https://github.com/ageron/data/tree/main/jsb_chor
 # Summary of Findings
 In our experiment CNN+LSTM model and Transformer Model achieved accuracy score 0.815 and 0.812 respectively. Though the accuracy score of both is in the same range yet from the graphs we found that if the sequence is long then the Transformer model might loose long-term coherence, as shown in the following graphs:
 
-<img src="../images/cnn_cold.JPG" width="500" />
+<img src="https://raw.githubusercontent.com/mahmudnahid/dl2-project2/main/images/cnn_cold.JPG" width="500" />
 
 Fig: Generated chorale by CNN+LSTM model 
 
-<img src="../images/transformer_cold.JPG" width="500" />
+<img src="https://raw.githubusercontent.com/mahmudnahid/dl2-project2/main/images/transformer_cold.JPG" width="500" />
 
 Fig: Generated chorale by Transformer model 
 
